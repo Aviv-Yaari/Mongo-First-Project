@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/general.css">
+  <link rel="stylesheet" href="/css/product.css" />
+  <title>Product</title>
+</head>
+
+<body>
+  <header>
+    <h1 productId="<%- product.id %>">
+      <%- product.name %>
+    </h1>
+    <span class="icon icon-edit material-icons-outlined"> edit </span>
+    <!-- <a id="delete" href="/products"> -->
+    <span class="icon icon-delete material-icons-outlined"> delete </span>
+    <!-- </a> -->
+  </header>
+
+  <form class="form-update" method="POST" action="/products/<%- product.id %>?_method=PATCH">
+    <div>
+      <span>Price:</span>
+      <span class="editable price">
+        <%- product.price %>
+      </span>
+      <input hidden required class="editable" type="number" name="price" id="price" value="<%- product.price %>" />
+    </div>
+    <div>
+      <span>Category:</span>
+      <span class="editable cat">
+        <%- product.category %>
+      </span>
+      <input hidden class="editable" type="text" name="category" id="category" value="<%- product.category %>" />
+    </div>
+    <div>
+      <button hidden class="editable">Confirm</button>
+    </div>
+  </form>
+
+  <section>
+
+  </section>
+  <footer>
+    <a href="/products">All Products</a>
+  </footer>
+  <script src="/js/product.js"></script>
+</body>
+
+</html>

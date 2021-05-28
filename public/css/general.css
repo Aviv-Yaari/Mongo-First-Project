@@ -1,0 +1,15 @@
+html {
+  font-family: "Roboto", sans-serif;
+  background-color: aliceblue;
+  padding-left: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+a:visited {
+  color: blue;
+}
+
+a:active {
+  color: blueviolet;
+}
