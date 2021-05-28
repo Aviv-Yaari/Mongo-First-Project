@@ -1,4 +1,4 @@
-// Product
+// Products
 const Product = require("./models/product");
 
 // Express
