@@ -13,6 +13,7 @@ A simple, (hopefully) intuitive market products management app.
 > 3. `create-product.ejs`: Create a new product:
 ![enter image description here](https://i.ibb.co/BjP1DHG/Untitled.jpg)
 
+.
 ## REST-based Architecture
 
 URL | GET| POST | PATCH | DELETE
