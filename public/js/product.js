@@ -8,7 +8,12 @@ const prodId = document.querySelector("h1").getAttribute("productId");
 elements.editIcon.addEventListener("click", () => {
   const editableElements = document.querySelectorAll(".editable");
   for (const element of editableElements) {
-    element.hidden = !element.hidden;
+    if (
+      element.tagName === "BUTTON" ||
+      element.classList.contains("category")
+    ) {
+      element.hidden = !element.hidden;
+    } else element.readOnly = !element.readOnly;
   }
 });
 
@@ -16,8 +21,10 @@ elements.editIcon.addEventListener("click", () => {
 const delUrl = `http://localhost:3000/products/${prodId}`;
 elements.deleteIcon.addEventListener("click", async () => {
   fetch(delUrl, {
-    method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+    method: "DELETE",
   }).then(() => {
     window.location.href = "http://localhost:3000/products";
   });
 });
+
+// Form Submit

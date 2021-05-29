@@ -1,6 +1,5 @@
 // Products
 const Product = require("./models/product");
-
 // Express
 const express = require("express");
 const app = express();
@@ -22,10 +21,14 @@ app.get("/", (req, res) => {
 });
 
 // Get All Products:
-app.get("/products", (req, res) => {
-  Product.getProducts
+app.get("/products", async (req, res) => {
+  const categories = await Product.distinct("category");
+  const filterCat = req.query.category;
+  let findQuery = {};
+  if (filterCat) findQuery.category = filterCat;
+  await Product.find(findQuery)
     .then((products) => {
-      res.render("products/products", { products });
+      res.render("products/products", { products, categories });
     })
     .catch((e) => {
       console.log(e);
@@ -34,20 +37,23 @@ app.get("/products", (req, res) => {
 });
 
 // Get Form - Create Product:
-app.get("/products/new", (req, res) => {
-  res.render("products/create-product");
+app.get("/products/new", async (req, res) => {
+  const categories = await Product.schema.path("category").enumValues;
+  res.render("products/create-product", { categories });
 });
 
 // Get a Specific Product:
-app.get("/products/:id", (req, res) => {
+app.get("/products/:id", async (req, res) => {
   const id = req.params.id;
+  let categories = await Product.schema.path("category").enumValues;
   Product.getProductById(id)
     .then((product) => {
-      console.log(product);
-      res.render("products/product", { product });
+      categories = categories.filter(
+        (category) => category != product.category
+      );
+      res.render("products/product", { product, categories });
     })
     .catch((e) => {
-      console.log(e);
       res.render("error", { e });
     });
 });
@@ -85,9 +91,9 @@ app.patch("/products/:id", (req, res) => {
 });
 
 // Delete Product:
-app.delete("/products/:id", async (req, res) => {
+app.delete("/products/:id", (req, res) => {
   const id = req.params.id;
-  await Product.deleteProduct(id)
+  Product.deleteProduct(id)
     .then((product) => {
       res.redirect(303, "/products");
     })
@@ -99,6 +105,7 @@ app.delete("/products/:id", async (req, res) => {
 
 // Mongoose
 const mongoose = require("mongoose");
+const { find } = require("./models/product");
 mongoose
   .connect("mongodb://localhost/farmStand", {
     useNewUrlParser: true,

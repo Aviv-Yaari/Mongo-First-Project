@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const db = mongoose.connection;
 const productSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,7 +20,6 @@ const Product = mongoose.model("Product", productSchema);
 
 // Exports:
 module.exports = Product;
-module.exports.getProducts = Product.find({});
 module.exports.getProductById = Product.findById;
 module.exports.createProduct = async function (pName, pPrice, pCat) {
   return await Product.create({

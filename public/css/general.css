@@ -1,15 +1,41 @@
 html {
   font-family: "Roboto", sans-serif;
-  background-color: aliceblue;
-  padding-left: 10px;
-  display: flex;
-  justify-content: center;
+  min-height: 100%;
 }
 
-a:visited {
-  color: blue;
+body {
+  background: rgb(118, 114, 185);
+  background: linear-gradient(
+    0deg,
+    rgba(118, 114, 185, 1) 0%,
+    rgba(89, 136, 252, 1) 17%,
+    rgba(22, 216, 255, 1) 100%
+  );
+  text-align: center;
 }
 
-a:active {
-  color: blueviolet;
+h1 {
+  background-color: rgba(255, 255, 255, 0.295);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+td:hover {
+  background-color: burlywood;
+}
+
+input:read-only {
+  cursor: initial;
+}
+
+form input[type="text"] {
+  text-transform: lowercase;
+}
+
+.container {
+  background-color: rgba(255, 255, 255, 0.548);
+  padding: 10px;
 }
