@@ -11,7 +11,7 @@ A simple, (hopefully) intuitive market products management app.
  ![enter image description here](https://i.ibb.co/tCPZyb6/Untitled.jpg)
 
 > 3. `create-product.ejs`: Create a new product:
->![enter image description here](https://i.ibb.co/BjP1DHG/Untitled.jpg)
+![enter image description here](https://i.ibb.co/BjP1DHG/Untitled.jpg)
 
 ## REST-based Architecture
 
