@@ -5,15 +5,15 @@ A simple, (hopefully) intuitive market products management app.
 
 ## Functions
 > 1. `products.ejs`: View all products. Filter by category. 
-![View All Products](https://i.ibb.co/FVSXnJT/Untitled.jpg)
+![](https://i.ibb.co/FVSXnJT/Untitled.jpg)
 
 > 2. `product.ejs`: Single product view/edit/delete form.
- ![enter image description here](https://i.ibb.co/tCPZyb6/Untitled.jpg)
+ ![](https://i.ibb.co/tCPZyb6/Untitled.jpg)
 
-> 3. `create-product.ejs`: Create a new product:
-![enter image description here](https://i.ibb.co/BjP1DHG/Untitled.jpg)
+> 3. `create-product.ejs`: Create a new product.
 
-.
+![](https://i.ibb.co/BjP1DHG/Untitled.jpg)
+
 ## REST-based Architecture
 
 URL | GET| POST | PATCH | DELETE
