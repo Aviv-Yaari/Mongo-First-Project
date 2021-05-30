@@ -1,5 +1,22 @@
 // Products
 const Product = require("./models/product");
+
+// Mongoose
+const mongoose = require("mongoose");
+require("./models/product");
+mongoose
+  .connect("mongodb://localhost/farmStand", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Mongo Connection Open.");
+  })
+  .catch((err) => {
+    console.log("Mongo Connection Error.", err);
+  });
+const db = mongoose.connection;
+
 // Express
 const express = require("express");
 const app = express();
@@ -102,19 +119,3 @@ app.delete("/products/:id", (req, res) => {
       res.render("error", { e });
     });
 });
-
-// Mongoose
-const mongoose = require("mongoose");
-const { find } = require("./models/product");
-mongoose
-  .connect("mongodb://localhost/farmStand", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Mongo Connection Open.");
-  })
-  .catch((err) => {
-    console.log("Mongo Connection Error.", err);
-  });
-const db = mongoose.connection;

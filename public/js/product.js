@@ -1,11 +1,10 @@
 const elements = {};
-elements.editIcon = document.querySelector(".icon-edit");
-elements.deleteIcon = document.querySelector(".icon-delete");
+elements.editBtn = document.querySelector("#edit");
 elements.deleteBtn = document.querySelector("#delete");
 const prodId = document.querySelector("h1").getAttribute("productId");
 
 // Edit Icon Functionality
-elements.editIcon.addEventListener("click", () => {
+elements.editBtn.addEventListener("click", () => {
   const editableElements = document.querySelectorAll(".editable");
   for (const element of editableElements) {
     if (
@@ -19,7 +18,7 @@ elements.editIcon.addEventListener("click", () => {
 
 // Delete
 const delUrl = `http://localhost:3000/products/${prodId}`;
-elements.deleteIcon.addEventListener("click", async () => {
+elements.deleteBtn.addEventListener("click", async () => {
   fetch(delUrl, {
     method: "DELETE",
   }).then(() => {

@@ -29,7 +29,7 @@
       </section>
       <section>
         <label for="cat">Category: </label>
-        <select class="form-control" type="text" name="cat" id="cat">
+        <select class="form-select" type="text" name="cat" id="cat">
           <% for (const category of categories) { %>
             <option>
               <%- category %>
@@ -42,7 +42,7 @@
         <!-- <input class="form-control" type="text" name="cat" id="cat" /> -->
       </section>
     </div>
-    <button type="submit" class="btn btn-light">Create</button>
+    <button type="submit" class="btn btn-light mt-2 mb-2">Create</button>
   </form>
   <script src="/js/create-product.js"></script>
   <footer>

@@ -22,10 +22,13 @@
     <h1 class="bg-light" productId="<%- product.id %>">
       <%- product.name %>
     </h1>
-    <div class="icon icon-edit material-icons-outlined"> edit </div>
-    <!-- <a id="delete" href="/products"> -->
-    <span class="icon icon-delete material-icons-outlined"> delete </span>
-    <!-- </a> -->
+    <button id="edit" type="button" class="btn btn-light">
+      <span class="icon icon-edit material-icons-outlined"> edit </span>
+    </button>
+
+    <button id="delete" type="button" class="btn btn-light">
+      <span class="icon icon-delete material-icons-outlined"> delete </span>
+    </button>
   </header>
 
   <form class="form-update" method="POST" action="/products/<%- product.id %>?_method=PATCH">
