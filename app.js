@@ -1,6 +1,3 @@
-// Products
-const Product = require("./models/product");
-
 // Mongoose
 const mongoose = require("mongoose");
 require("./models/product");
@@ -16,6 +13,10 @@ mongoose
     console.log("Mongo Connection Error.", err);
   });
 const db = mongoose.connection;
+
+// Products
+const Product = require("./models/product");
+const Farm = require("./models/farm");
 
 // Express
 const express = require("express");
@@ -37,6 +38,34 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+// FARMS
+// Get All Farms:
+app.get("/farms", async (req, res) => {
+  let farms = Farm.find({});
+  farms = await farms.populate("products.item");
+  res.render("farms", { farms });
+});
+
+// Get a Specific Farm:
+app.get("/farms/:id", async (req, res) => {
+  const id = req.params.id;
+  let farm = Farm.findById(id);
+  farm = await farm.populate("products.item");
+  res.render("farms/show", { farm });
+});
+
+// Add product to farm:
+app.post("/farms/:farmId", async (req, res) => {
+  const { farmId } = req.params;
+  const { prodName, prodQty } = req.body;
+  const farm = await Farm.findById(farmId);
+  const product = await Product.findOne({ name: prodName });
+  farm.products.push({ item: product, amount: prodQty });
+  farm.save();
+  res.redirect(`/farms/${farmId}`);
+});
+
+// PRODUCTS
 // Get All Products:
 app.get("/products", async (req, res) => {
   const categories = await Product.distinct("category");
